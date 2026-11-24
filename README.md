@@ -75,3 +75,35 @@ Desde el panel se pueden crear, editar y borrar posts. En la página de Posts so
 ## Modelo Post
 
 El modelo Post (posts/models.py) tiene los campos titulo, contenido, autor, fecha_creacion (se completa automáticamente) y estado (borrador, publicado o archivado).
+
+## CRUD de posts
+
+Desde el sitio se pueden gestionar los posts sin entrar al admin:
+
+- Listar: http://127.0.0.1:8000/posts/ (muestra los posts publicados)
+- Ver detalle: tocando el título de un post (posts/<id>/)
+- Crear: link "Nuevo post" del menú (posts/crear/)
+- Editar: botón "Editar" en el detalle (posts/<id>/editar/)
+- Eliminar: botón "Eliminar" en el detalle, con una página de confirmación antes de borrar (posts/<id>/eliminar/)
+
+El formulario está hecho con un ModelForm (PostForm, en posts/forms.py).
+
+## Imágenes
+
+Cada post puede tener una imagen opcional (campo imagen, un ImageField del modelo Post).
+
+Dependencia nueva: Pillow, necesaria para usar ImageField. Ya está incluida en requirements.txt.
+
+Configuración:
+
+- En settings.py se definieron MEDIA_URL = "/media/" y MEDIA_ROOT = BASE_DIR / "media". Las imágenes se guardan en la carpeta media/posts/.
+- En blog_project/urls.py se agregó la configuración para que Django muestre las imágenes durante el desarrollo.
+- El formulario usa enctype="multipart/form-data" y las views de crear y editar reciben request.FILES.
+- La carpeta media/ está en el .gitignore, porque las imágenes subidas son datos locales.
+
+Cómo probar la carga de imágenes:
+
+1. Aplicar las migraciones con python manage.py migrate.
+2. Levantar el servidor con python manage.py runserver.
+3. Entrar a "Nuevo post", completar los datos, elegir una imagen y guardar.
+4. La imagen se ve en el detalle del post y en el listado.

@@ -18,7 +18,7 @@
     <h2>Últimos posts</h2>
     {% for post in ultimos_posts %}
     <article class="post">
-        <h3>{{ post.titulo }}</h3>
+        <h3><a href="{% url 'detalle_post' post.pk %}">{{ post.titulo }}</a></h3>
         <p class="meta">{{ post.autor }} · {{ post.fecha_creacion|date:"d/m/Y" }}</p>
     </article>
     {% empty %}

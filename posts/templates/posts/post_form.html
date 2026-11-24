@@ -1,0 +1,21 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}{{ accion }} | Blog de Lourdes{% endblock %}
+
+{% block content %}
+<h1>{{ accion }}</h1>
+
+<form method="post" enctype="multipart/form-data" class="formulario">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <div class="acciones">
+        <button type="submit" class="boton">Guardar</button>
+        {% if post %}
+        <a href="{% url 'detalle_post' post.pk %}">Cancelar</a>
+        {% else %}
+        <a href="{% url 'lista_posts' %}">Cancelar</a>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}

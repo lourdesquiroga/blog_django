@@ -15,6 +15,8 @@ class Post(models.Model):
     autor = models.CharField(max_length=100)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     estado = models.CharField(max_length=20, choices=ESTADOS, default="borrador")
+    estado = models.CharField(max_length=20, choices=ESTADOS, default="borrador")
+    imagen = models.ImageField(upload_to="posts/", null=True, blank=True)
 
     # Cada post se muestra por su titulo (por ejemplo, en el admin)
     def __str__(self):

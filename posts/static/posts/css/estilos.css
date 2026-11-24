@@ -110,3 +110,57 @@ footer {
     color: #7A6A6C;
     font-size: 14px;
 }
+/* Imagenes de los posts */
+.imagen-post {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+/* Titulos que son links */
+.post h2 a,
+.post h3 a {
+    color: var(--bordo);
+    text-decoration: none;
+}
+
+.post h2 a:hover,
+.post h3 a:hover {
+    text-decoration: underline;
+}
+
+/* Botones y acciones */
+button.boton {
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.boton-peligro {
+    background-color: #A33A3A;
+}
+
+.acciones {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Formulario */
+.formulario p {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.formulario input[type="text"],
+.formulario textarea,
+.formulario select {
+    padding: 8px;
+    border: 1px solid #D9C9CB;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+}
