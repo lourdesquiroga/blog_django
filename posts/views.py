@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PostForm
 from .models import Post
@@ -17,7 +18,7 @@ def acerca(request):
     return render(request, "posts/acerca.html")
 
 
-# READ: muestra todos los posts publicados
+# READ: muestra todos los posts publicados (publica)
 def lista_posts(request):
     posts = Post.objects.filter(estado="publicado").order_by("-fecha_creacion")
     context = {
@@ -26,13 +27,14 @@ def lista_posts(request):
     return render(request, "posts/lista_posts.html", context)
 
 
-# READ: muestra un post completo
+# READ: muestra un post completo (publica)
 def detalle_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, "posts/detalle_post.html", {"post": post})
 
 
-# CREATE: muestra el formulario vacio y guarda el post nuevo
+# CREATE: solo usuarios con sesion iniciada
+@login_required
 def crear_post(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -44,7 +46,8 @@ def crear_post(request):
     return render(request, "posts/post_form.html", {"form": form, "accion": "Crear post"})
 
 
-# UPDATE: muestra el formulario con los datos del post y guarda los cambios
+# UPDATE: solo usuarios con sesion iniciada
+@login_required
 def editar_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -57,7 +60,8 @@ def editar_post(request, pk):
     return render(request, "posts/post_form.html", {"form": form, "accion": "Editar post", "post": post})
 
 
-# DELETE: pide confirmacion y despues borra el post
+# DELETE: solo usuarios con sesion iniciada
+@login_required
 def eliminar_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":

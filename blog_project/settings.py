@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
      # Aplicaciones propias
     'posts.apps.PostsConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,7 @@ MAILERS = {
 # Archivos subidos por los usuarios (imagenes de los posts)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+# Autenticacion
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "lista_posts"
+LOGOUT_REDIRECT_URL = "lista_posts"

@@ -1,0 +1,23 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}Editar perfil | Blog de Lourdes{% endblock %}
+
+{% block content %}
+<h1>Editar perfil</h1>
+
+<form method="post" enctype="multipart/form-data" class="formulario">
+    {% csrf_token %}
+    <section class="tarjeta">
+        <h2>Datos personales</h2>
+        {{ usuario_form.as_p }}
+    </section>
+    <section class="tarjeta">
+        <h2>Perfil</h2>
+        {{ perfil_form.as_p }}
+    </section>
+    <div class="acciones">
+        <button type="submit" class="boton">Guardar</button>
+        <a href="{% url 'perfil' %}">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

@@ -107,3 +107,45 @@ Cómo probar la carga de imágenes:
 2. Levantar el servidor con python manage.py runserver.
 3. Entrar a "Nuevo post", completar los datos, elegir una imagen y guardar.
 4. La imagen se ve en el detalle del post y en el listado.
+
+## Usuarios y perfiles
+
+El proyecto tiene una app llamada accounts para todo lo relacionado con usuarios. Usa el sistema de autenticación de Django (django.contrib.auth).
+
+Antes de usarlo hay que aplicar las migraciones, porque se agregó el modelo Perfil:
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+### Registro
+
+Desde "Registrarse" (http://127.0.0.1:8000/accounts/registro/) se crea un usuario nuevo con un formulario basado en UserCreationForm. Al registrarse se crea automáticamente su perfil (Perfil.objects.create en la vista de registro) y queda con la sesión iniciada.
+
+### Iniciar y cerrar sesión
+
+- Iniciar sesión: http://127.0.0.1:8000/accounts/login/ (usa LoginView de Django).
+- Cerrar sesión: botón "Cerrar sesión" del menú (usa LogoutView). Después de cerrar sesión se vuelve al listado de posts.
+
+El menú cambia según el usuario: si no inició sesión muestra "Iniciar sesión" y "Registrarse"; si inició sesión muestra "Crear post", "Mi perfil", "Cerrar sesión" y un saludo.
+
+### Modelo Perfil
+
+El modelo Perfil (accounts/models.py) está relacionado con User mediante un OneToOneField, así cada usuario tiene un único perfil. Tiene los campos biografia, link_web y avatar. Está registrado en el panel de administración.
+
+### Avatares
+
+El avatar es un ImageField que guarda las imágenes en media/avatares/. Usa la misma configuración de MEDIA_URL y MEDIA_ROOT que las imágenes de los posts. La vista de editar perfil recibe request.FILES para poder subir la imagen.
+
+- Ver perfil: http://127.0.0.1:8000/accounts/perfil/
+- Editar perfil (biografía, link, avatar, nombre, apellido y email): http://127.0.0.1:8000/accounts/perfil/editar/
+
+### Rutas protegidas
+
+Estas vistas requieren haber iniciado sesión (usan @login_required). Si se entra sin sesión, se redirige al login:
+
+- Crear post: posts/crear/ (también post/nuevo/)
+- Editar post: posts/<id>/editar/
+- Eliminar post: posts/<id>/eliminar/
+- Ver y editar el perfil: accounts/perfil/ y accounts/perfil/editar/
+
+El listado y el detalle de los posts siguen siendo públicos.

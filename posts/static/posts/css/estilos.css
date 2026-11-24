@@ -164,3 +164,34 @@ button.boton {
     font-family: inherit;
     font-size: 15px;
 }
+/* Boton de cerrar sesion con aspecto de link */
+.form-logout {
+    margin: 0;
+}
+
+.form-logout button {
+    background: none;
+    border: none;
+    color: var(--blanco);
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.form-logout button:hover {
+    color: var(--dorado);
+}
+
+.saludo {
+    color: var(--dorado);
+}
+
+/* Perfil */
+.avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--dorado);
+}

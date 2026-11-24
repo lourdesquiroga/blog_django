@@ -1,0 +1,36 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}Mi perfil | Blog de Lourdes{% endblock %}
+
+{% block content %}
+<h1>Mi perfil</h1>
+
+<section class="tarjeta perfil">
+    {% if perfil.avatar %}
+    <img src="{{ perfil.avatar.url }}" alt="Avatar de {{ user.username }}" class="avatar">
+    {% else %}
+    <p class="meta">Todavía no subiste un avatar.</p>
+    {% endif %}
+
+    <h2>{{ user.username }}</h2>
+    {% if user.first_name or user.last_name %}
+    <p>{{ user.first_name }} {{ user.last_name }}</p>
+    {% endif %}
+    {% if user.email %}
+    <p class="meta">{{ user.email }}</p>
+    {% endif %}
+
+    <h3>Biografía</h3>
+    {% if perfil.biografia %}
+    <p>{{ perfil.biografia|linebreaksbr }}</p>
+    {% else %}
+    <p class="meta">Todavía no escribiste tu biografía.</p>
+    {% endif %}
+
+    {% if perfil.link_web %}
+    <p><a href="{{ perfil.link_web }}" target="_blank">{{ perfil.link_web }}</a></p>
+    {% endif %}
+
+    <a href="{% url 'editar_perfil' %}" class="boton">Editar perfil</a>
+</section>
+{% endblock %}

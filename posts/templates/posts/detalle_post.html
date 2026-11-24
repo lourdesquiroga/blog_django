@@ -15,8 +15,10 @@
 </article>
 
 <div class="acciones">
+    {% if user.is_authenticated %}
     <a href="{% url 'editar_post' post.pk %}" class="boton">Editar</a>
     <a href="{% url 'eliminar_post' post.pk %}" class="boton boton-peligro">Eliminar</a>
+    {% endif %}
     <a href="{% url 'lista_posts' %}">Volver a los posts</a>
 </div>
 {% endblock %}

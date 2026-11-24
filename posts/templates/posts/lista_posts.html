@@ -5,7 +5,9 @@
 {% block content %}
 <h1>Posts</h1>
 
+{% if user.is_authenticated %}
 <p><a href="{% url 'crear_post' %}" class="boton">+ Nuevo post</a></p>
+{% endif %}
 
 {% for post in posts %}
 <article class="post">
