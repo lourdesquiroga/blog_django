@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Blog de Lourdes{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'posts/css/estilos.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'inicio' %}" class="logo">Blog de Lourdes</a>
+            <ul>
+                <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                <li><a href="{% url 'lista_posts' %}">Posts</a></li>
+                <li><a href="{% url 'acerca' %}">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>Blog de Lourdes · Proyecto de la cursada de Python</p>
+    </footer>
+</body>
+</html>

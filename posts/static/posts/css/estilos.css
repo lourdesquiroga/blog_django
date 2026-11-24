@@ -1,0 +1,112 @@
+/* Paleta Bordó */
+:root {
+    --fondo: #FAF5F5;
+    --bordo: #7A1F2B;
+    --dorado: #D4A373;
+    --texto: #2B1B1E;
+    --blanco: #FFFFFF;
+}
+
+/* General */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+h1, h2 {
+    color: var(--bordo);
+}
+
+/* Menu de navegacion */
+nav {
+    background-color: var(--bordo);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    color: var(--blanco);
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul a {
+    color: var(--blanco);
+    text-decoration: none;
+}
+
+nav ul a:hover {
+    color: var(--dorado);
+}
+
+/* Inicio */
+.bienvenida {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.subtitulo {
+    font-size: 20px;
+}
+
+/* Tarjetas y posts */
+.tarjeta,
+.post {
+    background-color: var(--blanco);
+    border-left: 4px solid var(--dorado);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.post h2 {
+    margin-top: 0;
+}
+
+.meta {
+    color: #7A6A6C;
+    font-size: 14px;
+}
+
+/* Boton */
+.boton {
+    display: inline-block;
+    background-color: var(--bordo);
+    color: var(--blanco);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.boton:hover {
+    background-color: var(--dorado);
+    color: var(--texto);
+}
+
+/* Pie de pagina */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #7A6A6C;
+    font-size: 14px;
+}

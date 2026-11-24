@@ -1,0 +1,17 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}Inicio | Blog de Lourdes{% endblock %}
+
+{% block content %}
+<section class="bienvenida">
+    <h1>Blog de Lourdes</h1>
+    <p class="subtitulo">¡Bienvenidos a mi blog!</p>
+</section>
+
+<section class="tarjeta">
+    <h2>¿De qué se trata?</h2>
+    <p>Este es un blog donde comparto lo que voy aprendiendo sobre programación, especialmente Python y Django.</p>
+    <p>Empezó como un programa de consola y ahora se está convirtiendo en un sitio web.</p>
+    <a href="{% url 'lista_posts' %}" class="boton">Ver los posts</a>
+</section>
+{% endblock %}

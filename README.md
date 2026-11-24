@@ -42,4 +42,16 @@ Abrir en el navegador: http://127.0.0.1:8000/
 
 ## Aplicaciones
 
-- posts: aplicación principal para manejar las publicaciones del blog.
+## Páginas del sitio
+
+Con el servidor funcionando, se puede entrar a:
+
+- Inicio: http://127.0.0.1:8000/
+- Posts: http://127.0.0.1:8000/posts/
+- Acerca de: http://127.0.0.1:8000/acerca/
+
+## Estructura de templates y estáticos
+
+- posts/templates/posts/base.html: plantilla base con el menú, de la que heredan las demás páginas.
+- posts/templates/posts/inicio.html, acerca.html y lista_posts.html: páginas del sitio.
+- posts/static/posts/css/estilos.css: estilos del sitio.
