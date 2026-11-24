@@ -55,3 +55,23 @@ Con el servidor funcionando, se puede entrar a:
 - posts/templates/posts/base.html: plantilla base con el menú, de la que heredan las demás páginas.
 - posts/templates/posts/inicio.html, acerca.html y lista_posts.html: páginas del sitio.
 - posts/static/posts/css/estilos.css: estilos del sitio.
+
+## Base de datos y panel de administración
+
+El proyecto usa SQLite. La base de datos (db.sqlite3) no se sube al repositorio, así que hay que crearla aplicando las migraciones:
+
+    python manage.py migrate
+
+Crear un usuario administrador:
+
+    python manage.py createsuperuser
+
+Levantar el servidor y entrar al panel:
+
+    http://127.0.0.1:8000/admin/
+
+Desde el panel se pueden crear, editar y borrar posts. En la página de Posts solo se muestran los que tienen estado "Publicado".
+
+## Modelo Post
+
+El modelo Post (posts/models.py) tiene los campos titulo, contenido, autor, fecha_creacion (se completa automáticamente) y estado (borrador, publicado o archivado).
